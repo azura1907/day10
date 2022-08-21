@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 60%;
+            height: 60%;
+        }
+
+        .container .area {
+            /* width: 20%;
+            height: 20%; */
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container .icon {
+            display: flex;
+            width: 100%;
+            height: 30%;
+            background: #f5f6f0;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container .content {
+            width: 100%;
+            height: 70%;
+            padding-top: 50px;
+        }
+
+        img{
+            width: 80%;
+            height: 80%;
+            filter: grayscale(100%);
+        }
+
+        .active {
+            background: #fff;
+        }
+
+        .active img {
+            filter: grayscale(0%);
+        }
+        
+        .container .box{
+            display: none;
+            background: #f5f6f0;
+        }
+
+        .container .show{
+            display: flex;
+            background: #fff;
+        }
+
+        .container .show img{
+            filter: grayscale(0%);
+            width: 40%;
+            height: 100%;
+            background: #fff;
+        }
+
+        .text h1{
+            color: #6615a7;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <div class="area active" id = "1">
+                <img src="images/tab-1.png" alt="img-1">
+            </div>
+            <div class="area" id = "2">
+                <img src="images/tab-2.png" alt="img-2">
+            </div>
+            <div class="area" id = "3">
+                <img src="images/tab-3.png" alt="img-3">
+            </div>
+            <div class="area" id = "4">
+                <img src="images/tab-4.png" alt="img-4">
+            </div>
+            <div class="area" id = "5">
+                <img src="images/tab-5.png" alt="img-5">
+            </div>
+        </div>
+        <div class="content">
+            <div class="box show">
+                <img src="images/tab-1.png" alt="img-1">
+                <div class="text">
+                    <h1>Research</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum est aperiam. 
+                        Iure architecto ea, sequi ex maiores esse eveniet tempore magnam voluptas recusandae beatae accusantium minima accusamus ipsum? Dolores.
+                    </p>
+                    <div class="detail">
+                        Detail
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/tab-2.png" alt="img-2">
+                <div class="text">
+                    <h1>Research</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum est aperiam. 
+                        Iure architecto ea, sequi ex maiores esse eveniet tempore magnam voluptas recusandae beatae accusantium minima accusamus ipsum? Dolores.
+                    </p>
+                    <div class="detail">
+                        Detail
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/tab-3.png" alt="img-3">
+                <div class="text">
+                    <h1>Research</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum est aperiam. 
+                        Iure architecto ea, sequi ex maiores esse eveniet tempore magnam voluptas recusandae beatae accusantium minima accusamus ipsum? Dolores.
+                    </p>
+                    <div class="detail">
+                        Detail
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/tab-4.png" alt="img-4">
+                <div class="text">
+                    <h1>Research</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum est aperiam. 
+                        Iure architecto ea, sequi ex maiores esse eveniet tempore magnam voluptas recusandae beatae accusantium minima accusamus ipsum? Dolores.
+                    </p>
+                    <div class="detail">
+                        Detail
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <img src="images/tab-5.png" alt="img-5">
+                <div class="text">
+                    <h1>Research</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorum est aperiam. 
+                        Iure architecto ea, sequi ex maiores esse eveniet tempore magnam voluptas recusandae beatae accusantium minima accusamus ipsum? Dolores.
+                    </p>
+                    <div class="detail">
+                        Detail
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var area = document.getElementsByClassName('area');
+        var box = document.getElementsByClassName('box');
+
+        for (var i = 0; i < area.length; i++){
+            area[i].addEventListener('mouseover', show);
+        }
+
+        function show(){
+            //trước khi show thì sẽ remove trước?
+            for (var i = 0; i < area.length; i++){
+                area[i].classList.remove('active')
+                box[i].classList.remove('show')
+            }
+            //this.classList.add('active') -> add thêm styte css active cho class đó
+            this.classList.add('active');
+            box[this.id-1].classList.add('show');
+        }
+
+        //Cách 2:
+
+        // for (var i = 0; i < area.length; i++){
+        //     area[i].addEventListener('mouseout', hide);
+        // }
+
+        // function hide(){   
+        //     this.classList.remove('active');
+        // }
+    </script>
+</body>
+</html>

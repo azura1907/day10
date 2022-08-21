@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ddd;
+        }
+
+        .container{
+            background: #dfd8d0;
+            padding: 10px;
+            border-radius: 10px;
+            border: solid #000;
+            box-shadow: 5px 10px 8px #888888;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        .display{
+            padding: 10px;
+            text-align: center;
+        }
+
+        .display h2{
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .display-area{
+            display: block;
+            height: 40px;
+            width: 100%;
+            outline: none;
+            border-radius: 6px;
+            background: #bcc398;
+        }
+
+        input[type="button"]{
+            width: 67px;
+            height: 67px;
+            background: #3a3a3a;
+            color: #fff;
+            font-size: 24px;
+            margin: 5px;
+            border-radius: 10%;
+            border:none;
+        }
+
+        input[value = "C"]{
+            background: #841828;
+        }
+
+        input[value = "<"]{
+            background: #841828;
+        }
+
+        input[value = "="]{
+            height: 144px;
+        }
+
+        input[value = "0"]{
+            width: 144px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display">
+            <h2>ELECTRONIC CALCULATOR</h2>
+            <input type="text" class="display-area" id ="result">
+        </div>
+        <div class="numbers">
+            <table>
+                <tr>
+                    <td><input type = "button" value = "C" onclick="removeAll()"></input></td>
+                    <td><input type = "button" value = "<" onclick="deleteNumber()"></input></td>
+                    <td><input type = "button" value = "/" onclick="add('/')"></input></td>
+                    <td><input type = "button" value = "X" onclick="add('*')"></input></td>
+                </tr>
+                <tr>
+                    <td><input type = "button" value = "7" onclick="add('7')"></input></td>
+                    <td><input type = "button" value = "8" onclick="add('8')"></input></td>
+                    <td><input type = "button" value = "9" onclick="add('9')"></input></td>
+                    <td><input type = "button" value = "-" onclick="add('-')"></input></td>
+                </tr>
+                <tr>
+                    <td><input type = "button" value = "4" onclick="add('4')"></input></td>
+                    <td><input type = "button" value = "5" onclick="add('5')"></input></td>
+                    <td><input type = "button" value = "6" onclick="add('6')"></input></td>
+                    <td><input type = "button" value = "+" onclick="add('+')"></input></td>
+                </tr>
+                <tr>
+                    <td><input type = "button" value = "1" onclick="add('1')"></input></td>
+                    <td><input type = "button" value = "2" onclick="add('2')"></input></td>
+                    <td><input type = "button" value = "3" onclick="add('3')"></input></td>
+                    <!-- rowspan="2" -> chiếm 2 row -->
+                    <td rowspan="2"><input type = "button" value = "=" onclick="calc()"></input></td>
+                </tr>
+                <tr>
+                    <!-- colspan="2" -> chiếm 2 col -->
+                    <td colspan="2"><input type = "button" value = "0" onclick="add('0')"></input></td>
+                    <td><input type = "button" value = "." onclick="add('.')"></input></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var result = document.getElementById("result");
+        function add(x){
+            result.value = result.value + x;
+        }
+
+        function calc(){
+            if (result.value != ""){
+                result.value = eval(result.value);
+            }
+        }
+
+        function removeAll(){
+            result.value = "";
+        }
+
+        function deleteNumber(){
+            result.value = result.value.slice(0,- 1);
+        }
+</script>
+</body>
+</html>
